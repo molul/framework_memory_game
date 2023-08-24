@@ -1,16 +1,27 @@
+import './Card.css'
 
-const Card = ({card, handleChoice}) => {
+const Card = ({ card, handleChoice, flipped, disabled }) => {
 
 	const handleClick = () => {
-		handleChoice(card)
+		if (!disabled) {
+			handleChoice(card)
+		}
 	}
 
   return (
-    <div>
-      <div className="rounded-lg overflow-hidden text-center">
-				<img className="mx-auto rounded-lg border-2 border-white bg-green-400" src={card.src} alt={"front-" + card.src} />
+    <div className='card'>
+      <div className={`
+				overflow-hidden 
+				text-center
+				${flipped 
+					? 'flipped'
+					:	''
+				}
+				`}
+			>
+				<img className="front  mx-auto rounded-lg border-2 border-white bg-green-400" src={card.src} alt={"front-" + card.src} />
         
-				<img onClick={handleClick} className="mx-auto  rounded-lg border-2 border-white bg-green-400" src="/img/back.jpg" alt="back" />
+				<img onClick={handleClick} className="transition-transform back mx-auto  rounded-lg border-2 border-white bg-green-400" src="/img/back.jpg" alt="back" />
       </div>
     </div>
   );
