@@ -68,35 +68,37 @@ function App() {
 
   return (
     <>
-      <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mt-12">FRAMEWORKS MEMORY GAME</h1>
-      <button
-        onClick={shuffleCards}
-        className="
-					my-8
-					bg-blue-600 
-					hover:bg-blue-500 
-					transition-colors
-					text-lg 
-					px-3
-					py-2 
-					rounded-lg 
-					"
-      >
-        New game
-      </button>
+			<div className="font-montserrat">
+				<h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mt-12">FRAMEWORKS MEMORY GAME</h1>
+				<button
+					onClick={shuffleCards}
+					className="
+						my-8
+						bg-blue-600 
+						hover:bg-blue-500 
+						transition-colors
+						text-lg 
+						px-4
+						py-2 
+						rounded-lg 
+						"
+				>
+					NEW GAME
+				</button>
 
-      <div className="max-w-[860px] px-8 grid grid-cols-3 md:grid-cols-4 gap-4 mx-auto">
-        {cards.map((card, index) => (
-          <Card 
-						handleChoice={handleChoice} 
-						key={index} 
-						card={card}
-						flipped={card === choiceOne || card === choiceTwo || card.matched}
-						disabled={disabled}
-					/>
-        ))}
-      </div>
-			<p>Turns: {turns}</p>
+				<div className="max-w-[860px] px-8 grid grid-cols-3 md:grid-cols-4 gap-4 mx-auto">
+					{cards.map((card, index) => (
+						<Card 
+							handleChoice={handleChoice} 
+							key={index} 
+							card={card}
+							flipped={card === choiceOne || card === choiceTwo || card.matched}
+							disabled={disabled}
+						/>
+					))}
+				</div>
+				<div className="bg-gray-800 py-2 w-full absolute bottom-0">Turns: {turns}</div>
+			</div>
     </>
   );
 }
