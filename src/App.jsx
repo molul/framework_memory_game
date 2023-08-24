@@ -82,7 +82,9 @@ function App() {
 	}, [])
 
 	useEffect(() => {
-		checkEndGame();
+		if (cards.length >0 ) {
+			checkEndGame();
+		}
 	}, [cards])
 
   return (
