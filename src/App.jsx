@@ -17,14 +17,16 @@ function App() {
 	const [choiceOne, setChoiceOne] = useState(null);
 	const [choiceTwo, setChoiceTwo] = useState(null);
 	const [disabled, setDisabled] = useState(false);
+	const [endGame, setEndGame] = useState(false);
 
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }));
 
-		setChoiceOne(null)
-		setChoiceTwo(null)
+		setEndGame(false);
+		setChoiceOne(null);
+		setChoiceTwo(null);
     setCards(shuffledCards);
     setTurns(0);
   };
@@ -47,13 +49,26 @@ function App() {
 						}
 					})
 				})
-				resetTurn();
+				setTimeout(()=> {
+					resetTurn();
+				}, 500);
 			} else {
 				setTimeout(()=> resetTurn(), 1000)
 			}
 		}
 
 	}, [choiceOne, choiceTwo])
+
+	const checkEndGame = () => {
+		let isEnd = true;
+		for (let i = 0; i < cards.length; i++) {
+			const card = cards[i];
+			if (card.matched === false) {
+				isEnd = false;
+			}
+		}
+		setEndGame(isEnd)
+	}
 
 	const resetTurn = () => {
 		setChoiceOne(null)
@@ -65,6 +80,10 @@ function App() {
 	useEffect(() => {
 		shuffleCards()
 	}, [])
+
+	useEffect(() => {
+		checkEndGame();
+	}, [cards])
 
   return (
     <>
@@ -89,6 +108,10 @@ function App() {
 					NEW GAME
 				</button>
 
+				<div className={`font-bold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-600  w-full py-4 transition-opacity duration-1000 ${endGame ? 'z-50 opacity-100' : 'z-1 opacity-0'}`}>
+					YOU WIN!!
+				</div>
+
 				<div className="max-w-[860px] px-8 grid grid-cols-3 md:grid-cols-4 gap-4 mx-auto">
 					{cards.map((card, index) => (
 						<Card 
@@ -101,7 +124,7 @@ function App() {
 					))}
 				</div>
 				
-				<div className="bg-stone-900 mt-4 py-2 w-full ">
+				<div className="text-lg mt-4 py-2 ">
 					<span className="font-bold">Turns:</span> {turns}
 				</div>
 			</div>
