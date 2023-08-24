@@ -68,8 +68,8 @@ function App() {
 
   return (
     <>
-			<div className="font-montserrat">
-				<h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-8">FRAMEWORKS MEMORY GAME</h1>
+			<div className="font-montserrat bg-stone-800 h-screen">
+				<h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold pt-8">FRAMEWORKS MEMORY GAME</h1>
 				<button
 					onClick={shuffleCards}
 					className="
@@ -89,7 +89,7 @@ function App() {
 					NEW GAME
 				</button>
 
-				<div className="max-w-[860px] px-8 grid grid-cols-3 md:grid-cols-4 gap-4 mx-auto">
+				<div className="max-w-[860px] px-8 grid grid-cols-3 lg:grid-cols-4 gap-4 mx-auto">
 					{cards.map((card, index) => (
 						<Card 
 							handleChoice={handleChoice} 
@@ -100,7 +100,7 @@ function App() {
 						/>
 					))}
 				</div>
-				<div className="bg-gray-800 py-2 w-full absolute bottom-0"><span className="font-bold">Turns:</span> {turns}</div>
+				<div className="bg-stone-900 py-2 w-full absolute bottom-0"><span className="font-bold">Turns:</span> {turns}</div>
 			</div>
     </>
   );
