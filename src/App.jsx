@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Card from "./components/Card";
 
 const cardImages = [
-  { src: "/img/angular.jpg" },
-  { src: "/img/django.jpg" },
-  { src: "/img/nextjs.jpg" },
-  { src: "/img/nuxt.jpg" },
-  { src: "/img/react.jpg" },
-  { src: "/img/vue.jpg" },
+  { src: "/img/angular.jpg", matched: false },
+  { src: "/img/django.jpg", matched: false },
+  { src: "/img/nextjs.jpg", matched: false },
+  { src: "/img/nuxt.jpg", matched: false },
+  { src: "/img/react.jpg", matched: false },
+  { src: "/img/vue.jpg", matched: false },
 ];
 
 function App() {
@@ -28,29 +28,58 @@ function App() {
 
 	// Handle a choice
 	const handleChoice = (card) => {
-		choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+		choiceOne ? ( choiceOne.id !== card.id && setChoiceTwo(card)) : setChoiceOne(card);
+	}
 
+	useEffect (() => {
+		if (choiceOne && choiceTwo) {
+			if (choiceOne.src === choiceTwo.src) {
+				setCards(prevCards => {
+					return prevCards.map(card => {
+						if (card.src === choiceOne.src) {
+							return { ...card, matched: true}
+						} else {
+							return card;
+						}
+					})
+				})
+				resetTurn();
+			} else {
+				console.log('No match')
+				resetTurn()
+			}
+		}
+
+	}, [choiceOne, choiceTwo])
+
+	console.log(cards)
+
+	const resetTurn = () => {
+		setChoiceOne(null)
+		setChoiceTwo(null)
+		setTurns(prevTurns => prevTurns + 1)
 	}
 
   return (
     <>
-      <h1 className="text-4xl font-bold my-4">FRAMEWORKS MEMORY GAME</h1>
+      <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mt-12">FRAMEWORKS MEMORY GAME</h1>
       <button
         onClick={shuffleCards}
         className="
-					my-4
+					my-8
 					bg-blue-600 
 					hover:bg-blue-500 
 					transition-colors
 					text-lg 
-					p-2 
+					px-3
+					py-2 
 					rounded-lg 
 					"
       >
         New game
       </button>
 
-      <div className="max-w-[860px] p-8 grid grid-cols-3 md:grid-cols-4 gap-4 mx-auto">
+      <div className="max-w-[860px] px-8 grid grid-cols-3 md:grid-cols-4 gap-4 mx-auto">
         {cards.map((card, index) => (
           <Card handleChoice={handleChoice} key={index} card={card} />
         ))}
