@@ -89,7 +89,7 @@ function App() {
 					NEW GAME
 				</button>
 
-				<div className="max-w-[860px] px-8 grid grid-cols-3 lg:grid-cols-4 gap-4 mx-auto">
+				<div className="max-w-[860px] px-8 grid grid-cols-3 md:grid-cols-4 gap-4 mx-auto">
 					{cards.map((card, index) => (
 						<Card 
 							handleChoice={handleChoice} 
@@ -100,7 +100,10 @@ function App() {
 						/>
 					))}
 				</div>
-				<div className="bg-stone-900 py-2 w-full absolute bottom-0"><span className="font-bold">Turns:</span> {turns}</div>
+				
+				<div className="bg-stone-900 mt-4 py-2 w-full ">
+					<span className="font-bold">Turns:</span> {turns}
+				</div>
 			</div>
     </>
   );
