@@ -1,10 +1,10 @@
 
-const NewGameButton = ({ func, title }) => {
+const NewGameButton = ({ func, text }) => {
 
   return (
 		<button
 		onClick={func}
-		className="
+		className={`
 			bg-slate-600 
 			hover:bg-slate-400 
 			transition-colors
@@ -13,9 +13,9 @@ const NewGameButton = ({ func, title }) => {
 			px-4
 			py-2 
 			rounded-lg 
-			"
+			`}
 	>
-		{title}
+		{text}
 	</button>
 
   );

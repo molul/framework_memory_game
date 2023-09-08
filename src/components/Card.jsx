@@ -21,7 +21,7 @@ const Card = ({ card, handleChoice, flipped, disabled }) => {
 			>
 				<img className="front  mx-auto rounded-lg border-4 border-slate-500 bg-green-400" src={card.src} alt={"front-" + card.src} />
         
-				<img onClick={handleClick} className="transition-transform back mx-auto  rounded-lg border-4 border-slate-300 bg-green-400" src="/img/back.jpg" alt="back" />
+				<img onClick={handleClick} className="transition-transform back mx-auto  rounded-lg border-4 border-slate-500 bg-green-400" src="/img/back.jpg" alt="back" />
       </div>
     </div>
   );

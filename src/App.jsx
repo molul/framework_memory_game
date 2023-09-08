@@ -28,8 +28,12 @@ function App() {
 		setEndGame(false);
 		setChoiceOne(null);
 		setChoiceTwo(null);
-    setCards(shuffledCards);
-    setTurns(0);
+
+		// Small timeout to not show the new cards on reset
+		setTimeout( () => {
+			setCards(shuffledCards);
+			setTurns(0);
+		}, 500);
   };
 
 	// Handle a choice
@@ -124,13 +128,16 @@ function App() {
 
 							{/* RESTART GAME BUTTON */}
 							<div className="z-50">
-								<NewGameButton func={shuffleCards} title="Restart" />
+								<NewGameButton 
+									func={shuffleCards} 
+									text="Restart" 
+								/>
 							</div>
 						</div>
 
 
 						{/* CARDS GRID */}
-						<div className="grid grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 mx-auto bg-slate-400 p-4 sm:p-8 rounded-lg shadow-lg">
+						<div className="grid grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 mx-auto bg-slate-300 p-4 sm:p-8 rounded-lg shadow-lg">
 							{cards.map((card, index) => (
 								<Card 
 									handleChoice={handleChoice} 
