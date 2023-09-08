@@ -96,7 +96,7 @@ function App() {
     <>
 			<div className="font-montserrat bg-slate-700 h-screen">
 
-				<div className="max-w-[860px] px-8 mx-auto py-4">
+				<div className="max-w-[860px] px-2 sm:px-6 lg:px-8 mx-auto py-4">
 
 					<div className="bg-slate-500 flex items-center justify-left gap-4 p-4 rounded-lg  shadow-lg">
 						<div className="w-12 sm:w-16 ">
