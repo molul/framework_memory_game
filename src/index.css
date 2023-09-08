@@ -4,10 +4,5 @@
 
 
 body {
-	font-family: Montserrat, sans-serif;
-	margin: 0;
-	font-size: 1.5em;
-	text-align: center;
-	background: #1b1523;
-	color: white;
+	@apply font-montserrat m-0 text-xl text-center bg-[#1b1523] text-white;
 }
