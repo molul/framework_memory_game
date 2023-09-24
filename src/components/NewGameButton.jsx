@@ -1,10 +1,8 @@
-
 const NewGameButton = ({ func, text }) => {
-
   return (
-		<button
-		onClick={func}
-		className={`
+    <button
+      onClick={func}
+      className={`
 			bg-slate-600 
 			hover:bg-slate-400 
 			transition-colors
@@ -14,12 +12,10 @@ const NewGameButton = ({ func, text }) => {
 			py-2 
 			rounded-lg 
 			`}
-	>
-		{text}
-	</button>
-
+    >
+      {text}
+    </button>
   );
 };
-
 
 export default NewGameButton;
