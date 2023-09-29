@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Card from "./components/Card";
 import NewGameButton from "./components/NewGameButton";
+import Header from "./components/Header";
 
 const cardImages = [
   { src: "/img/angular.jpg", matched: false },
@@ -95,17 +96,9 @@ function App() {
 
   return (
     <>
-      <div className="font-montserrat bg-slate-700 h-screen">
+      <div className="font-montserrat bg-slate-700 h-screen flex flex-col justify-between">
         <div className="max-w-[860px] px-2 sm:px-6 lg:px-8 mx-auto py-4">
-          <div className="bg-slate-500 flex items-center justify-left gap-4 p-4 rounded-lg  shadow-lg">
-            <div className="w-12 sm:w-16 ">
-              <img src="/react.png" alt="react_icon" />
-            </div>
-            <div className="flex flex-col sm:flex-row sm:gap-2 text-lg text-left sm:text-2xl md:text-3xl lg:text-3xl font-bold">
-              <div className="">FRAMEWORKS</div>
-              <div className="">MEMORY GAME</div>
-            </div>
-          </div>
+          <Header />
 
           <div className="text-center">
             {/* Interface */}
@@ -148,6 +141,15 @@ function App() {
               ))}
             </div>
           </div>
+        </div>
+        <div className="text-base bg-slate-500 p-4">
+          Developed by{" "}
+          <span className="font-bold">
+            <a href="https://www.luismorcilloluque.com/en" target="_blank">
+              Luis Morcillo
+            </a>
+          </span>{" "}
+          with React &copy; 2023
         </div>
       </div>
     </>
